@@ -1,6 +1,5 @@
 package com.obedhack.myparot
 
-
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -19,7 +18,6 @@ class MainActivity : AppCompatActivity() {
                 val title = it.getStringExtra("title")
                 val text = it.getStringExtra("text")
 
-                // Store the notification content
                 val sharedPreferences = getSharedPreferences("notifications", Context.MODE_PRIVATE)
                 val storedNotifications = sharedPreferences.getString("notifications", "")
                 val newNotifications = "$storedNotifications\n$title: $text"
@@ -32,11 +30,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Register the broadcast receiver
         val filter = IntentFilter("com.example.NOTIFICATION_LISTENER")
         registerReceiver(notificationReceiver, filter)
 
-        // Schedule the email worker
         val emailWorkRequest = PeriodicWorkRequestBuilder<EmailWorker>(1, TimeUnit.HOURS).build()
         WorkManager.getInstance(this).enqueue(emailWorkRequest)
     }
@@ -46,3 +42,4 @@ class MainActivity : AppCompatActivity() {
         unregisterReceiver(notificationReceiver)
     }
 }
+

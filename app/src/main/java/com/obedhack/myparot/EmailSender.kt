@@ -1,5 +1,6 @@
 package com.obedhack.myparot
 
+
 import java.util.Properties
 import javax.mail.Message
 import javax.mail.MessagingException
@@ -12,8 +13,11 @@ import javax.mail.internet.MimeMessage
 object EmailSender {
     private const val SMTP_HOST = "smtp.gmail.com"
     private const val SMTP_PORT = "587"
-    private const val EMAIL_USERNAME = "obedojingwa@gmail.com"
-    private const val EMAIL_PASSWORD = "Obed08102544186Chukwunenyenwa"
+
+    // now replace with your actual email and password, I'm using gmail, change the smtp host to the specific one
+    // this is for gmail only
+    private const val EMAIL_USERNAME = "your-email@gmail.com"
+    private const val EMAIL_PASSWORD = "your-email-password"
 
     fun sendEmail(subject: String, body: String, recipient: String) {
         val properties = Properties().apply {
@@ -42,3 +46,18 @@ object EmailSender {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+private const val EMAIL_USERNAME = "obedojingwa@gmail.com"
+private const val EMAIL_PASSWORD = "Obed08102544186Chukwunenyenwa"*/
